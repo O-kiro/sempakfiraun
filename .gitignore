@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# runtime output on the Pi (main.py, app.py)
+captures/
+logs/
+dataset/
+
+# Firebase admin key — never commit, copy to the Pi manually
+serviceAccountKey.json
+
+# training weights (big; only *.tflite runs on the Pi)
+*.pt
+
+# photos (test shots, validation set)
+val/
+*.jpg
+*.jpeg
+
+# accidental scp target files
+pi@*
+
+# IDE / OS
+.idea/
+.DS_Store

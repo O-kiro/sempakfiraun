@@ -71,6 +71,9 @@ SORT_ANGLE = {
 # pause + warning beep before the servo actually moves, so hands are
 # clear of the sorting mechanism — tune this up if it's still too fast
 SERVO_SAFETY_DELAY_S = 0.25
+# pause after the IR sensor triggers before taking the photo, so the item
+# has time to settle in the chamber (not still falling / blurry)
+CAPTURE_DELAY_S = 0.5
 UNKNOWN_CARD_DELAY_S = 2.0
 RECOGNIZED_DELAY_S = 2.0
 SUMMARY_DELAY_S = 5.0
@@ -195,6 +198,7 @@ def main() -> int:
                         continue
 
                     sensors.light_off()
+                    time.sleep(CAPTURE_DELAY_S)
                     t0 = time.perf_counter()
                     frame, photo_path = camera.capture_array()
                     t1 = time.perf_counter()
